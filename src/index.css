@@ -1,0 +1,126 @@
+@import "tailwindcss";
+@import "@fontsource/geist-sans/400.css";
+@import "@fontsource/geist-sans/500.css";
+@import "@fontsource/geist-sans/600.css";
+@import "@fontsource/geist-mono/400.css";
+@import "@fontsource/geist-mono/500.css";
+
+@theme {
+  --font-sans: "Geist Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, "Cascadia Code", monospace;
+
+  --radius: 0rem;
+  --radius-sm: 0rem;
+  --radius-md: 0rem;
+  --radius-lg: 0rem;
+  --radius-xl: 0rem;
+  --radius-2xl: 0rem;
+  --radius-full: 0rem;
+
+  --color-background: oklch(4% 0 0);
+  --color-foreground: oklch(97% 0 0);
+  --color-muted: oklch(15% 0 0);
+  --color-muted-foreground: oklch(55% 0 0);
+  --color-border: oklch(18% 0 0);
+  --color-card: oklch(8% 0 0);
+  --color-card-foreground: oklch(97% 0 0);
+  --color-accent: oklch(97% 0 0);
+  --color-accent-foreground: oklch(4% 0 0);
+  --color-green: oklch(72% 0.18 145);
+  --color-green-dim: oklch(72% 0.18 145 / 15%);
+  --color-amber: oklch(80% 0.18 80);
+  --color-red: oklch(65% 0.2 25);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--color-border); }
+::-webkit-scrollbar-thumb:hover { background: oklch(30% 0 0); }
+
+/* Circuit background pattern */
+.circuit-bg {
+  background-image:
+    linear-gradient(oklch(18% 0 0 / 40%) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(18% 0 0 / 40%) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Glass card */
+.glass-card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+}
+
+/* Glow effects */
+.glow-white {
+  box-shadow: 0 0 20px oklch(97% 0 0 / 5%), 0 0 60px oklch(97% 0 0 / 3%);
+}
+.glow-green {
+  box-shadow: 0 0 20px oklch(72% 0.18 145 / 20%), 0 0 60px oklch(72% 0.18 145 / 10%);
+}
+
+/* Terminal cursor blink */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.animate-blink { animation: blink 1s step-end infinite; }
+
+/* Marquee */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes marquee-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0%); }
+}
+.animate-marquee { animation: marquee 40s linear infinite; }
+.animate-marquee-reverse { animation: marquee-reverse 40s linear infinite; }
+
+/* Scan line */
+@keyframes scan {
+  0% { top: -10%; }
+  100% { top: 110%; }
+}
+
+/* Wallet adapter overrides */
+.wallet-adapter-button {
+  font-family: var(--font-mono) !important;
+  background: transparent !important;
+  border: 1px solid var(--color-border) !important;
+  color: var(--color-foreground) !important;
+  border-radius: 0 !important;
+  padding: 8px 16px !important;
+  font-size: 12px !important;
+  letter-spacing: 0.05em !important;
+}
+.wallet-adapter-button:hover {
+  background: var(--color-muted) !important;
+  border-color: oklch(40% 0 0) !important;
+}
+.wallet-adapter-modal-wrapper {
+  background: var(--color-card) !important;
+  border: 1px solid var(--color-border) !important;
+  border-radius: 0 !important;
+}
+.wallet-adapter-modal-title {
+  font-family: var(--font-mono) !important;
+}
